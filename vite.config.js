@@ -3,15 +3,16 @@ import react from "@vitejs/plugin-react-swc";
 
 // https://vite.dev/config/
 export default defineConfig({
-    plugins: [react()],
-    server: {
-        port: 5173, //vite's port
-        proxy: {
-            "/api": {
-                target: "http://localhost:8000", //url django server
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, ""),
-            },
-        },
+  plugins: [react()],
+  server: {
+    host: "0.0.0.0", // listen in all interfaces
+    port: 3000, //vite's mapped port
+    proxy: {
+      "/api": {
+        target: "http://localhost:8000", //url django server
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
     },
+  },
 });

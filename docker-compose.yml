@@ -3,9 +3,13 @@ services:
     build:
       context: C:\Users\DIEID\Desktop\fiscalia\frontend
     container_name: react-app
-    command: npm run dev
+    command: npm run dev -- --host
     volumes:
-      - ./frontend:/frontend
-      - /frontend/node_modules:/frontend/node_modules
+      - .:/app
+      - /app/node_modules
+
     ports:
       - "3000:3000"
+    environment:
+      - VITE_HOST=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
