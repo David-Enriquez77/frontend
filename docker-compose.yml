@@ -13,3 +13,9 @@ services:
     environment:
       - VITE_HOST=0.0.0.0
       - CHOKIDAR_USEPOLLING=true
+      - VITE_BASE_API_URL=http://web:8000
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
